@@ -1,0 +1,4 @@
+
+spin_init: {r0: 0.85, sx_bias: 0.10, sy_bias: 0.25, sz_bias: 0.20, noise_std: 0.06}
+mapping: {az_map: 2.4, bx_map: 2.0, by_map: 2.0, dy_map: 2.0}
+spin: {Jx: 0.8, Jy: 0.8, Jz: 0.5, eta: 0.14, temp: 0.06, r_bar: 0.6, radius_reg: 0.02, rho_star: 0.32}
