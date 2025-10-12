@@ -1,6 +1,6 @@
 # spinflow (lightweight core)
 
-Chinese comments; English figures. CTM baseline + optional spin coupling.
+CTM baseline + optional spin coupling.
 
 ## Quickstart
 ```bash
