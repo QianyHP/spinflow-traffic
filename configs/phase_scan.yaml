@@ -1,4 +1,0 @@
-grid: 7
-sx_range: [-0.8, 0.8]
-sy_range: [-0.8, 0.8]
-threshold_quantile: 0.7

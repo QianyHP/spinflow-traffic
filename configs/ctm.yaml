@@ -1,6 +1,0 @@
-
-rho_init:
-  background: 0.18
-  noise_std: 0.02
-  jam_blocks: {count: 1, hi_min: 0.62, hi_max: 0.78}
-ctm: {v_min: 0.4, v_top: 1.0, w_min: 0.4, w_max: 0.9, Q0: 0.30}
