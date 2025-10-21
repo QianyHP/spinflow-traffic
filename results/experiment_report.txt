@@ -1,0 +1,42 @@
+================================================================================
+Experiment Results - Statistical Report
+================================================================================
+
+1. Spatial Configuration
+   - Road length: 280.0m
+   - Spatial cells: 140
+   - Spatial resolution: 2.00m/cell
+   - Bottleneck region: 100-200m (50 cells)
+
+2. Temporal Configuration
+   - Start time: 60s
+   - Observation duration: 45s
+   - Time resolution: 0.25s
+   - Time steps: 180
+
+3. Density Field Statistics
+   - Initial density mean: 0.7712
+   - Initial density std: 0.3547
+   - Initial density range: [0.0000, 1.0000]
+   - Bottleneck density mean: 0.9707
+   - Bottleneck density std: 0.0699
+
+4. Spin Field Statistics
+   - Average magnitude: 0.6923
+   - Magnitude std: 0.0986
+   - Magnitude range: [0.5119, 0.8216]
+
+5. Observation Data Statistics
+   - Raw density max: 0.6667 veh/m
+   - Estimated jam density: 0.3611 veh/m
+   - Normalized density mean: 0.2449
+   - Lane count range: 1-5
+
+6. Generated Files
+   - results/optimal_inverse_init.npz (inversion data)
+   - results/density_comparison.png (density analysis)
+   - results/initial_analysis.png (comprehensive analysis)
+   - results/bottleneck_analysis.png (bottleneck details)
+   - results/experiment_report.txt (this report)
+
+================================================================================
