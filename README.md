@@ -63,31 +63,11 @@ spinflow/
 └── README.md        
 ```
 
-## 🛠️ Installation & Usage
-
-SpinFlow is built on the native Python scientific computing stack and does not require a GPU environment.
-
-1.  **Install Dependencies**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-2.  **Run Inversion (Default Dataset)**
-    ```bash
-    cd spin_inversion
-    python main.py --dataset YTDJ
-    ```
-
-3.  **Custom Run**
-    ```bash
-    # Run Eastbound analysis on a custom CSV and set EM iterations to 50
-    python main.py --csv ../data/your_data.csv --direction eb --em-iters 50
-    ```
-
 ## 📝 Citation & License
 
 This project is licensed under the **MIT License**. If you use the code or ideas from this project in your research, please cite the relevant paper.
 
 ---
 © 2025-2026 SpinFlow Team.
+
 
