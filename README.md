@@ -6,14 +6,9 @@
 
 ## 📖 Introduction
 
-**SpinFlow** is a cutting-edge physics-informed traffic state inversion framework. It innovatively introduces the **Heisenberg Spin Model from statistical physics** to describe the evolution of traffic phases. Combined with **Kerner's Three-Phase Traffic Theory**, it achieves high-precision modeling and inversion of complex traffic congestion propagation mechanisms.
+**SpinFlow** is a physics-informed traffic state inversion framework. It innovatively introduces the **Heisenberg Spin Model from statistical physics** to describe the evolution of traffic phases. Combined with **Kerner's Three-Phase Traffic Theory**, it achieves high-precision modeling and inversion of complex traffic congestion propagation mechanisms.
 
 Traditional traffic flow theories, typically based on continuum assumptions, struggle to accurately capture "Synchronized Flow"—a critical metastable state. SpinFlow introduces a **microscopic spin field** as a latent variable and constructs a **Competitive Balance Perception Mapping**. This successfully unifies the competition mechanism between free flow and congested flow mathematically, and naturally explains the emergence of synchronized flow at the point of competitive balance.
-
-**Core Features:**
-*   **Physics Inversion**: Utilizes **Spin-CTM** to combine microscopic phase transition dynamics with macroscopic Conservation Law (CTM), reconstructing full spacetime flow, density fields, and latent spin fields from sparse trajectory data.
-*   **Three-Phase Identification**: Automatically identifies **Free Flow**, **Synchronized Flow (Critical State)**, and **Wide Moving Jam**.
-*   **Data-Driven & Interpretable**: An unsupervised learning framework based on the **EM (Expectation-Maximization) Algorithm**. It requires no manual phase labeling, as parameters are entirely data-driven with clear physical meanings.
 
 
 > **Note: Core solver and phase mapping logic are currently withheld pending paper publication.**
@@ -62,12 +57,10 @@ spinflow/
 │   ├── preprocessing.py    
 │   ├── evaluator.py        
 │   ├── viz_diagnostics.py  
-│   └── viz_spacetime.py    
-├── paper/                  
+│   └── viz_spacetime.py                 
 ├── requirements.txt        
 ├── LICENSE                 
-└── README.md               
-└── README_EN.md            
+└── README.md        
 ```
 
 ## 🛠️ Installation & Usage
@@ -97,3 +90,4 @@ This project is licensed under the **MIT License**. If you use the code or ideas
 
 ---
 © 2025-2026 SpinFlow Team.
+
