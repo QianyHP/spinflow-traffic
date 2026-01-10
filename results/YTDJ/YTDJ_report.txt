@@ -1,0 +1,53 @@
+================================================================================
+Spin Field Inversion Quality Assessment Report
+================================================================================
+
+Method: SpinInversion
+Inversion Target: s(x) ONLY
+Density Source: Observation Data (Edie Method)
+
+1. FD Matching Quality (Core Metrics)
+   FD Observation Points: 344
+   
+   Flow Prediction:
+     RMSE = 188.0 veh/h
+     MAE  = 144.3 veh/h
+     R2   = 0.7632
+   
+   Velocity Prediction:
+     RMSE = 1.88 km/h
+     MAE  = 1.13 km/h
+     R2   = 0.8942
+
+2. Phase Weight Distribution
+   Free      :  54 cells ( 38.6%)
+   Critical  :  41 cells ( 29.3%)
+   Congested :  45 cells ( 32.1%)
+
+3. Prototype Parameters
+   Prototype 0:
+     vf=6.4 km/h, Q0=817 veh/h, ρ_c=247.0 veh/km
+   Prototype 1:
+     vf=24.7 km/h, Q0=849 veh/h, ρ_c=164.4 veh/km
+   Prototype 2:
+     vf=32.1 km/h, Q0=1703 veh/h, ρ_c=87.5 veh/km
+
+4. Convergence Performance
+   Iterations: 36
+   Loss Drop: 2.4803 → 1.1799 (52.4%)
+
+5. Parallelogram Sampling
+   Lw=30.0m, H=10.0m
+   FD Points: 344 (Baseline 125, +175.2%)
+
+6. Phase Structure Metrics (Section 7.5)
+   Phase Entropy H(x):
+     Mean = 0.6814 (Low=Pure, High=Mixed)
+     Std  = 0.3723
+   Structure Regularity G_pi:
+     Total = 0.3509
+     Mean  = 0.002524 (Low=Smooth, High=Oscillating)
+
+Quality Rating:
+   Based on: R2_q=0.763, RMSE_v=1.88 km/h
+================================================================================
