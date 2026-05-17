@@ -1,0 +1,111 @@
+# =============================================================================
+# SpinFlow pipeline configuration (canonical location for reproducible runs).
+#
+# Resolution:  CLI --config  >  $SPINFLOW_CONFIG  >  configs/pipeline.yaml
+# Keys under ``defaults`` apply to all datasets; dataset blocks (YTDJ, RML, …)
+# override/extend defaults. Paths such as ``csv:`` are relative to the repo root
+# unless given as absolute. CLI flags override YAML when explicitly passed.
+# =============================================================================
+
+defaults:
+  # --- 数据处理参数 ---
+  lanes: "all"             # 包含的车道 ("all" 或特定ID如 "1,2")
+  direction: "eb"          # 行车方向 ("eb": 东向, "wb": 西向)
+
+  # --- 求解器参数 (EM算法) ---
+  n_prototypes: 3          # 原型数量 (默认3相: F, C, J)
+  em_iters: 80             # EM算法最大迭代次数
+  inner_iters: 20          # E-step 内部梯度下降迭代次数
+  seed: 123                # 随机种子 (用于复现)
+  
+  # --- 损失权重与收敛参数 ---
+  lam_fd_q: 1.0            # FD拟合中的流量匹配损失权重
+  lam_phys: 0.02           # 物理守恒约束权重 (基于连续性方程)
+  lam_smo: 0.02            # Heisenberg交互作用（自旋相邻平滑）
+  convergence_tol: 0.0001  # EM算法收敛阈值
+  learning_rate: 0.05      # EM内层循环梯度下降的学习率 (步长)
+
+  # --- 采样参数 (默认值) ---
+  min_points: 3            # 最少轨迹点数（防止空窗口，不作为质量控制）
+
+  # --- 空间裁剪参数 ---
+  x_offset: 0.0            # (m) 忽略起点附近的异常区域，裁剪后会把s平移到从0开始（保持口径一致）
+
+
+YTDJ:
+  # YTDJ 数据集特定配置
+  fps: 24.0                # 0.041s 时间精度
+  t0: 60.0                  # 采样起始
+  T_sample: 485.0          # 采样时长 (总时长9分5秒)
+  wave_speed: -8.5         # 针对拥堵流的波速 (km/h)
+  road_length: 280.0       # 路段总长 (m)
+  cells: 140               # dx ~ 2m
+  v_max: 80.0
+  # --- 采样参数 ---
+  Lw: 30.0                 # 平行四边形窗口长度 (m)
+  H: 5.0                  # 平行四边形窗口时间长度 (s)
+  csv: "data/processed_data/YTDJ/VTDJ_6-10.csv"
+
+RML:
+  # RML 数据集特定配置         
+  fps: 30.0                # 0.033s 时间精度
+  t0: 30.0
+  T_sample: 270.0          # 总时长5分钟
+  wave_speed: -6.0         # 标准高速波速估计 (km/h)
+  road_length: 220.0
+  cells: 110
+  v_max: 80.0
+  # --- 采样参数 ---
+  Lw: 20.0                 # 平行四边形窗口长度 (m)
+  H: 3.0                  # 平行四边形窗口时间长度 (s)
+  csv: "data/processed_data/RML/RML_1-4.csv"
+
+XAM-N6:
+  # XAM-N6 数据集特定配置
+  fps: 60.0                # 0.016s 时间精度
+  t0: 70.0                 # 前70s几乎无车/空窗；剔除以避免密度均值被稀释→误判Free
+  T_sample: 259.0          # 总时长329s
+  wave_speed: -6.55        # XAM 对波速敏感；与本数据集更匹配 (km/h)
+  road_length: 120.0
+  cells: 55
+  v_max: 80.0
+  # --- 采样参数 ---
+  Lw: 20.0                 # 收紧窗口以提高"准稳态"成立概率
+  H: 3.0                  # 收紧窗口以提高"准稳态"成立概率
+  x_offset: 10.0           # (m) 起点0-10m存在蓝边/异常观测，剔除避免污染采样与评估
+  csv: "data/processed_data/XAM-N6/XAM-N6_6-9.csv"
+
+NGSIM-I80:
+  # NGSIM I-80 (Lane2~6) 数据集配置
+  fps: 1.0                 # Time字段为秒级采样，dt≈1s
+  t0: 100.0
+  T_sample: 800.0          # 准稳态更强的窗口，降低全时段非平衡扰动
+  wave_speed: -16.0        # I-80 拥堵波速
+  road_length: 540.0
+  cells: 270               # dx = 2.0m
+  v_max: 80.0
+  # --- 采样参数 ---
+  Lw: 150.0
+  H: 8.0
+  n_select: null
+  lanes: "2,3,4,5,6"
+  csv: "data/processed_data/NGSIM-I80/NGSIM-I80_2-6.csv"
+  direction: "eb"
+
+HighD:
+  # HighD-58 上半幅 (lane 2~5) 数据集配置
+  # fps=25Hz，空间覆盖约425.43m，方向已统一为沿程递增
+  fps: 25.0
+  t0: 0.0
+  T_sample: 389.0          # 对齐 58 号上半幅有效时长
+  wave_speed: -12.0
+  road_length: 425.43      # 与处理后数据空间范围一致（m）
+  cells: 213               # dx ≈ 2.0m
+  v_max: 100.0             # 限制极高速稀有速度档，减少无效采样
+  # --- 采样参数 ---
+  Lw: 150.0
+  H: 8.0
+  min_points: 5
+  lanes: "2,3,4,5"
+  direction: "eb"
+  csv: "data/processed_data/HighD/HighD-58_upper_2-5.csv"
