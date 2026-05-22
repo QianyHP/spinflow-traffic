@@ -70,6 +70,10 @@ EM training dynamics versus iteration for the joint spin–FD inversion.
 
 ![EM convergence](results/paper_figures/fig5_convergence.png)
 
+### 6. Hyperparameter sensitivity analysis
+
+![Hyperparameter sensitivity analysis](results/paper_figures/fig6_sensitivity.png)
+
 ---
 
 ## 📂 Project Structure
