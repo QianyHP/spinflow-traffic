@@ -1,6 +1,8 @@
 # SpinFlow: A Physics-Informed Spin Field Framework for Traffic Phase Inference and Transition Detection
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2605.23306-b31b1b.svg)](https://arxiv.org/abs/2605.23306)
 
 This work has been accepted for an oral presentation at the IEEE International Conference on Intelligent Transportation Systems (ITSC) 2026.
 
